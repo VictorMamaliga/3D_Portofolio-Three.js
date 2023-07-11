@@ -90,11 +90,10 @@ const Button = styled.button`
 const Right = styled.div`
   flex: 3;
   position: relative;
-  @media only screen and (max-width: 768px) {
-    flex: 1;
-    width: 100%;
-  }
+  overflow: visible;
+  
 `;
+
 
 const Img = styled.img`
   width: 800px;
@@ -120,38 +119,44 @@ const Img = styled.img`
   }
 `;
 
-export const Hero = () => {
+const Hero = () => {
   return (
     <Section>
       <Navbar />
-      <Left>
-        <Title>Guta. Regele. Manelelor. Intergalactice</Title>
-        <WhatWeDo>
-          <Line src="../../public/img/line.png" />
-          <Subtitle>Locoul 1 ,numai 1 !</Subtitle>
-        </WhatWeDo>
-        <Desc>Numai unu, sunt mereu pe locul unu , nu dau inapoi, nu cad pe locul doi !</Desc>
-        <Button>Learn More</Button>
-      </Left>
-      <Right>
-        <Canvas>
-          <Suspense fallback={null}>
-            <OrbitControls enableZoom={false} />
-            <ambientLight intensity={1} />
-            <directionalLight position={[3, 2, 1]} />
-            <Sphere args={[1, 100, 200]} scale={2.4}>
-              <MeshDistortMaterial
-                color="#3d1c56"
-                attach="material"
-                distort={0.5}
-                speed={2}
-              />
-            </Sphere>
-          </Suspense>
-        </Canvas>
-        <Img src="../../public/img/gutaMoon.png" />
-      </Right>
-      <Container></Container>
+      <Container>
+        <Left>
+          <Title>Guta. Regele. Manelelor. Intergalactice</Title>
+          <WhatWeDo>
+            <Line src="./img/line.png" />
+            <Subtitle>Locoul 1 ,numai 1 !</Subtitle>
+          </WhatWeDo>
+          <Desc>
+            Numai unu, sunt mereu pe locul unu , nu dau inapoi, nu cad pe locul doi !
+          </Desc>
+          <Button>Learn More</Button>
+        </Left>
+        <Right>
+          <Canvas>
+            <Suspense fallback={null}>
+              <OrbitControls enableZoom={false} autoRotate={true}/>
+              <ambientLight intensity={1} />
+              <directionalLight position={[3, 2, 1]} />
+              <Sphere args={[1, 100, 200]} scale={2.4}>
+                <MeshDistortMaterial
+                  color="#3d1c56"
+                  attach="material"
+                  distort={0.5}
+                  speed={2}
+                />
+              </Sphere>
+            </Suspense>
+          </Canvas>
+          <Img src="./img/moon.png" />
+        </Right>
+      </Container>
     </Section>
-  )
-}
+  );
+};
+
+export default Hero;
+
