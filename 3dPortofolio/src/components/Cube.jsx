@@ -15,8 +15,8 @@ const Cube = () => {
         <RenderTexture attach="map">
           <PerspectiveCamera makeDefault position={[0, 0, 5]} />
           <color attach="background" args={["#dc9dcd"]} />
-          <Text ref={textRef} fontSize={9} color="#8cf8dd">
-            ollo
+          <Text ref={textRef} fontSize={2} color="#8cf8dd">
+            poze ViceCity
           </Text>
         </RenderTexture>
       </meshStandardMaterial>
