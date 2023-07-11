@@ -151,7 +151,7 @@ const Hero = () => {
               </Sphere>
             </Suspense>
           </Canvas>
-          <Img src="./img/moon.png" />
+          <Img src="./img/gutaMoon.png" />
         </Right>
       </Container>
     </Section>
