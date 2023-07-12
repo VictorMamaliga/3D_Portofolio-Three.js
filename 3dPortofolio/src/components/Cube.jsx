@@ -1,27 +1,37 @@
-import React, { useRef } from "react";
-import { PerspectiveCamera, RenderTexture, Text } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import React from 'react'
+import { useLoader } from '@react-three/fiber'
+import { TextureLoader, RepeatWrapping } from 'three'
+// import { Mesh } from '@react-three/drei'
 
 const Cube = () => {
-  const textRef = useRef();
-  useFrame(
-    (state) =>
-      (textRef.current.position.x = Math.sin(state.clock.elapsedTime) * 2)
-  );
+  const texture1 = useLoader(TextureLoader, '../../public/img/gutaMoon.png')
+  const texture2 = useLoader(TextureLoader, '../../public/img/gutaMoon.png')
+  const texture3 = useLoader(TextureLoader, '../../public/img/gutaMoon.png')
+  const texture4 = useLoader(TextureLoader, '../../public/img/gutaMoon.png')
+  const texture5 = useLoader(TextureLoader, '../../public/img/gutaMoon.png')
+  const texture6 = useLoader(TextureLoader, '../../public/img/gutaMoon.png')
+
+  const materials = [
+    texture1,
+    texture2,
+    texture3,
+    texture4,
+    texture5,
+    texture6
+  ].map(texture => {
+    texture.wrapS = RepeatWrapping
+    texture.wrapT = RepeatWrapping
+    return { map: texture }
+  })
+
   return (
     <mesh>
-      <boxGeometry />
-      <meshStandardMaterial>
-        <RenderTexture attach="map">
-          <PerspectiveCamera makeDefault position={[0, 0, 5]} />
-          <color attach="background" args={["#dc9dcd"]} />
-          <Text ref={textRef} fontSize={2} color="#8cf8dd">
-            poze ViceCity
-          </Text>
-        </RenderTexture>
-      </meshStandardMaterial>
+      <boxGeometry args={[1, 1, 1]} />
+      {materials.map((material, index) => (
+        <meshStandardMaterial attachArray="material" key={index} {...material} />
+      ))}
     </mesh>
-  );
-};
+  )
+}
 
-export default Cube;
+export default Cube

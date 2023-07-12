@@ -133,7 +133,7 @@ const Hero = () => {
           <Desc>
             Numai unu, sunt mereu pe locul unu , nu dau inapoi, nu cad pe locul doi !
           </Desc>
-          <Button>Learn More</Button>
+          <Button>Manele Vechi</Button>
         </Left>
         <Right>
           <Canvas>
