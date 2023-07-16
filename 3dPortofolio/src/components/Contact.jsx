@@ -95,7 +95,7 @@ export const Contact = () => {
           </Form>
         </Left>
         <Right>
-          <Map/>
+          <Map />
         </Right>
       </Container>
     </Section>

@@ -1,34 +1,30 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useLoader } from '@react-three/fiber'
-import { TextureLoader, RepeatWrapping } from 'three'
-// import { Mesh } from '@react-three/drei'
+import { TextureLoader } from 'three'
 
 const Cube = () => {
-  const texture1 = useLoader(TextureLoader, '../../public/img/gutaMoon.png')
-  const texture2 = useLoader(TextureLoader, '../../public/img/gutaMoon.png')
-  const texture3 = useLoader(TextureLoader, '../../public/img/gutaMoon.png')
-  const texture4 = useLoader(TextureLoader, '../../public/img/gutaMoon.png')
-  const texture5 = useLoader(TextureLoader, '../../public/img/gutaMoon.png')
-  const texture6 = useLoader(TextureLoader, '../../public/img/gutaMoon.png')
+  const [texture1, texture2, texture3, texture4, texture5, texture6] = useMemo(() => {
+    const loader = new TextureLoader()
+    return [
+      loader.load('../../public/img/gtaImage1.jpg'),
+      loader.load('../../public/img/gtaImage5.png'),
+      loader.load('../../public/img/gta1.jpg'),
+      loader.load('../../public/img/gtaImage2.jpg'),
+      loader.load('../../public/img/gtaImage4.jpg'),
+      loader.load('../../public/img/gta1.jpg')
+    ]
+  }, [])
 
-  const materials = [
-    texture1,
-    texture2,
-    texture3,
-    texture4,
-    texture5,
-    texture6
-  ].map(texture => {
-    texture.wrapS = RepeatWrapping
-    texture.wrapT = RepeatWrapping
-    return { map: texture }
-  })
+  const materials = useMemo(
+    () => [texture1, texture2, texture3, texture4, texture5, texture6].map(map => ({ map })),
+    [texture1, texture2, texture3, texture4, texture5, texture6]
+  )
 
   return (
     <mesh>
       <boxGeometry args={[1, 1, 1]} />
       {materials.map((material, index) => (
-        <meshStandardMaterial attachArray="material" key={index} {...material} />
+        <meshBasicMaterial attachArray="material" key={index} {...material} />
       ))}
     </mesh>
   )

@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { styled } from 'styled-components'
-import { Navbar } from './Navbar'
+import  Navbar  from './Navbar'
 import { Canvas } from '@react-three/fiber';
 import { Sphere, OrbitControls, MeshDistortMaterial } from '@react-three/drei';
 
@@ -50,6 +50,7 @@ const Title = styled.h1`
 
   @media only screen and (max-width: 768px) {
     text-align: center;
+    padding: 0px;
   }
 `;
 
@@ -71,7 +72,7 @@ const Desc = styled.p`
   font-size: 24px;
   color: lightgray;
   @media only screen and (max-width: 768px) {
-    padding: 20px;
+    padding: 30px;
     text-align: center;
   }
 `;
@@ -90,8 +91,11 @@ const Button = styled.button`
 const Right = styled.div`
   flex: 3;
   position: relative;
-  overflow: visible;
   
+  @media only screen and (max-width: 768px) {
+    flex:1;
+    width:100%;
+  }
 `;
 
 
@@ -125,7 +129,7 @@ const Hero = () => {
       <Navbar />
       <Container>
         <Left>
-          <Title>Guta. Regele. Manelelor. Intergalactice</Title>
+          <Title>Guta. Regele. Manelelor</Title>
           <WhatWeDo>
             <Line src="./img/line.png" />
             <Subtitle>Locoul 1 ,numai 1 !</Subtitle>
@@ -141,7 +145,7 @@ const Hero = () => {
               <OrbitControls enableZoom={false} autoRotate={true}/>
               <ambientLight intensity={1} />
               <directionalLight position={[3, 2, 1]} />
-              <Sphere args={[1, 100, 200]} scale={2.4}>
+              <Sphere args={[1, 100, 200]} scale={1.7}>
                 <MeshDistortMaterial
                   color="#3d1c56"
                   attach="material"
