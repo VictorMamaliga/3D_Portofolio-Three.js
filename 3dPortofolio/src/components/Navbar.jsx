@@ -69,20 +69,26 @@ const Button = styled.button`
 `;
 
 const Navbar = () => {
+  const scrollTo = (elementId) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <Section>
       <Container>
         <Links>
           <Logo src="./img/VM.png" />
           <List>
-            <ListItem>Home</ListItem>
-            <ListItem>Studio</ListItem>
-            <ListItem>Works</ListItem>
-            <ListItem>Contact</ListItem>
+            <ListItem onClick={() => scrollTo("home")}>Home</ListItem>
+            <ListItem onClick={() => scrollTo("studio")}>Studio</ListItem>
+            <ListItem onClick={() => scrollTo("works")}>Works</ListItem>
+            <ListItem onClick={() => scrollTo("contact")}>Contact</ListItem>
           </List>
         </Links>
         <Icons>
-          {/* Changed the image due to copyright problems */}
           <Icon src="./img/search.png" />
           <Button>Hire Now</Button>
         </Icons>
@@ -90,5 +96,6 @@ const Navbar = () => {
     </Section>
   );
 };
+
 
 export default Navbar;
