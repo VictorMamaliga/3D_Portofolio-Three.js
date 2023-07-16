@@ -80,7 +80,7 @@ const Right = styled.div`
 
 export const Contact = () => {
   return (
-    <Section>
+    <Section  id="contact" >
       <Container>
         <Left>
           <Form>

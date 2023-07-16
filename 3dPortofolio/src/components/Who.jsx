@@ -90,7 +90,7 @@ const Button = styled.button`
 
 export const Who = () => {
   return (
-    <Section>
+    <Section id="studio">
       <Container>
         <Left>
           <Canvas camera={{fov:25, position:[2,2,5]}} >
