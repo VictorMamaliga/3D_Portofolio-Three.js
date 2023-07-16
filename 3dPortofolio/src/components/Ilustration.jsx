@@ -1,9 +1,8 @@
-import { OrbitControls, Stage } from '@react-three/drei'
-import { Canvas } from '@react-three/fiber'
 import React from 'react'
-import { Tommy } from './Tommy'
+import { Canvas } from '@react-three/fiber'
+import { OrbitControls, Stage } from '@react-three/drei'
+import { Cj } from './Cj'
 import { styled } from 'styled-components';
-
 
 const Desc = styled.div`
 width:200px;
@@ -23,13 +22,12 @@ right:100px;
   }
 `;
 
-
-const ProductDesign = () => {
+const Illustration = () => {
     return (
         <>
           <Canvas camera={{ fov: 45, position: [2, 2, 5] }}>
             <Stage environment="city" intensity={1.5}>
-              <Tommy />
+              <Cj />
             </Stage>
             <OrbitControls enableZoom={false} autoRotate={true} />
           </Canvas>
@@ -38,4 +36,4 @@ const ProductDesign = () => {
       )
     }
 
-export default ProductDesign
+export default Illustration

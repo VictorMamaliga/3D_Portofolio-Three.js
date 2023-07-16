@@ -3,6 +3,8 @@ import { styled } from 'styled-components'
 import WebDesign from './WebDesign';
 import Development from './Development';
 import ProductDesign from './ProductDesign';
+import Illustration from './Ilustration';
+import SocialMedia from './SocialMedia';
 
 
 
@@ -20,14 +22,21 @@ const Section = styled.div`
   scroll-snap-align: center;
   display: flex;
   justify-content: center;
-  
+  position: relative;
+  color: black;
+  font-size: 14px;
+  font-weight: 300;
+
 `;
 
 const Container = styled.div`
   width: 1400px;
   display: flex;
   justify-content: space-between;
-
+  @media only screen and (max-width: 768px) {
+    width:100%;
+    flex-direction: column;
+  }
   
 `;
 
@@ -35,7 +44,10 @@ const Left = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
-
+  @media only screen and (max-width: 768px) {
+    padding: 20px;
+    justify-content:center;
+  }
 `;
 
 const List = styled.ul`
@@ -53,7 +65,10 @@ const ListItem = styled.li`
   color: transparent;
   -webkit-text-stroke: 1px white;
   position: relative;
-
+  @media only screen and (max-width: 768px) {
+    font-size:30px;
+    
+  }
   &::after {
     content: "${(props) => props.text}";
     position: absolute;
@@ -111,9 +126,13 @@ export const Works = () => {
           <WebDesign />
           ) : work === "Development" ? (
           <Development />
-          ) : (
+          ) :  work === "Product Design" ? (
           <ProductDesign />
-          )}
+          ): work  === "Illustration" ? (
+            <Illustration/> 
+          ): work === "Social Media" ? (
+            <SocialMedia/>
+          ): null}
         </Right>
       </Container>
     </Section>

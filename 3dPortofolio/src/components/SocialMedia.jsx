@@ -1,12 +1,12 @@
+import { OrbitControls, Stage } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import React from 'react'
-import { OrbitControls, Stage } from '@react-three/drei'
-import { HeadMiky } from './HeadMiky'
-import { styled } from 'styled-components'
+import { KenVice } from './KenVice'
+import { styled } from 'styled-components';
 
 const Desc = styled.div`
 width:200px;
-height:50px;
+height:40px;
 padding:20px;
 background-color:white;
 border-radius:10px;
@@ -22,12 +22,12 @@ right:100px;
   }
 `;
 
-const WebDesign = () => {
+const SocialMedia = () => {
   return (
     <>
       <Canvas camera={{ fov: 45, position: [2, 2, 5] }}>
         <Stage environment="city" intensity={1.5}>
-          <HeadMiky />
+          <KenVice />
         </Stage>
         <OrbitControls enableZoom={false} autoRotate={true} />
       </Canvas>
@@ -36,4 +36,4 @@ const WebDesign = () => {
   )
 }
 
-export default WebDesign
+export default SocialMedia
