@@ -1,52 +1,62 @@
-import React from 'react'
-import { styled } from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
 const Section = styled.div`
   display: flex;
-  justify-content:center;
-`
+  justify-content: center;
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
 const Container = styled.div`
   width: 1400px;
   display: flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:10px 0;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0px;
 
-`
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+    padding: 10px;
+  }
+`;
+
 const Links = styled.div`
   display: flex;
-  align-items:center;
-  gap:50px;
+  align-items: center;
+  gap: 50px;
+`;
 
-  
-`
 const Logo = styled.img`
-  height:100px
+  height: 50px;
 `;
 
 const List = styled.ul`
   display: flex;
-  gap:20px;
-  list-style:none;
+  gap: 20px;
+  list-style: none;
+
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
-const ListItem = styled.div`
+const ListItem = styled.li`
   cursor: pointer;
-
 `;
-
 
 const Icons = styled.div`
   display: flex;
-  align-items:center;
-  gap:20px;
+  align-items: center;
+  gap: 20px;
 `;
 
 const Icon = styled.img`
-  width:20px;
+  width: 20px;
   cursor: pointer;
 `;
-
 
 const Button = styled.button`
   width: 100px;
@@ -58,25 +68,34 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+const Navbar = () => {
+  const scrollTo = (elementId) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
-export const Navbar = () => {
   return (
     <Section>
       <Container>
         <Links>
-          <Logo src='../../public/img/VM.png' />
+          <Logo src="./img/VM.png" />
           <List>
-            <ListItem>Home</ListItem>
-            <ListItem>Studio</ListItem>
-            <ListItem>Works</ListItem>
-            <ListItem>Contact</ListItem>
+            <ListItem onClick={() => scrollTo("home")}>Home</ListItem>
+            <ListItem onClick={() => scrollTo("studio")}>Studio</ListItem>
+            <ListItem onClick={() => scrollTo("works")}>Works</ListItem>
+            <ListItem onClick={() => scrollTo("contact")}>Contact</ListItem>
           </List>
         </Links>
         <Icons>
-          <Icon src="../../public/img/search.png" />
+          <Icon src="./img/search.png" />
           <Button>Hire Now</Button>
         </Icons>
       </Container>
     </Section>
-  )
-}
+  );
+};
+
+
+export default Navbar;

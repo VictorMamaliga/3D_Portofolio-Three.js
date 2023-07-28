@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { Suspense } from "react";
 import { styled } from 'styled-components'
-import { Navbar } from './Navbar'
+import  Navbar  from './Navbar'
+import { Canvas } from '@react-three/fiber';
+import { Sphere, OrbitControls, MeshDistortMaterial } from '@react-three/drei';
 
 const Section = styled.div`
   height: 100vh;
@@ -48,6 +50,7 @@ const Title = styled.h1`
 
   @media only screen and (max-width: 768px) {
     text-align: center;
+    padding: 0px;
   }
 `;
 
@@ -69,7 +72,7 @@ const Desc = styled.p`
   font-size: 24px;
   color: lightgray;
   @media only screen and (max-width: 768px) {
-    padding: 20px;
+    padding: 30px;
     text-align: center;
   }
 `;
@@ -88,11 +91,13 @@ const Button = styled.button`
 const Right = styled.div`
   flex: 3;
   position: relative;
+  
   @media only screen and (max-width: 768px) {
-    flex: 1;
-    width: 100%;
+    flex:1;
+    width:100%;
   }
 `;
+
 
 const Img = styled.img`
   width: 800px;
@@ -117,23 +122,45 @@ const Img = styled.img`
     }
   }
 `;
-export const Hero = () => {
+
+const Hero = () => {
   return (
-    <Section>
+    <Section id = "home">
       <Navbar />
-      <Left>
-        <Title>Guta. Regele. Manelelor. Intergalactice</Title>
-        <WhatWeDo>
-          <Line src="../../public/img/line.png" />
-          <Subtitle>Locoul 1 ,numai 1 !</Subtitle>
-        </WhatWeDo>
-        <Desc>Numai unu, sunt mereu pe locul unu , nu dau inapoi, nu cad pe locul doi !</Desc>
-        <Button>Learn More</Button>
-      </Left>
-      <Right>
-        <Img src="../../public/img/gutaMoon.png" />
-      </Right>
-      <Container></Container>
+      <Container>
+        <Left>
+          <Title>Guta. Regele. Manelelor</Title>
+          <WhatWeDo>
+            <Line src="./img/line.png" />
+            <Subtitle>Locoul 1 ,numai 1 !</Subtitle>
+          </WhatWeDo>
+          <Desc>
+            Numai unu, sunt mereu pe locul unu , nu dau inapoi, nu cad pe locul doi !
+          </Desc>
+          <Button>Manele Vechi</Button>
+        </Left>
+        <Right>
+          <Canvas>
+            <Suspense fallback={null}>
+              <OrbitControls enableZoom={false} autoRotate={true}/>
+              <ambientLight intensity={1} />
+              <directionalLight position={[3, 2, 1]} />
+              <Sphere args={[1, 100, 200]} scale={1.7}>
+                <MeshDistortMaterial
+                  color="#3d1c56"
+                  attach="material"
+                  distort={0.5}
+                  speed={2}
+                />
+              </Sphere>
+            </Suspense>
+          </Canvas>
+          <Img src="./img/gutaMoon.png" />
+        </Right>
+      </Container>
     </Section>
-  )
-}
+  );
+};
+
+export default Hero;
+
